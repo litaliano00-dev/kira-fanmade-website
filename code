@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kira - The God of the New World</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --blood-red: #8a0303;
+            --dark-red: #600000;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #2a2a2a;
+            --light-gray: #7a7a7a;
+            --gold: #c8b273;
+            --parchment: #f0e6d2;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: var(--parchment);
+            font-family: 'Crimson Text', serif;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(120, 0, 0, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(120, 0, 0, 0.1) 0%, transparent 20%),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238a0303' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid var(--dark-red);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        header::before, header::after {
+            content: "✞";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--blood-red);
+            font-size: 2rem;
+        }
+        
+        header::before {
+            left: 10%;
+        }
+        
+        header::after {
+            right: 10%;
+        }
+        
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 5rem;
+            color: var(--blood-red);
+            text-shadow: 0 0 15px rgba(138, 3, 3, 0.7);
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--blood-red), transparent);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--light-gray);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: var(--gold);
+            text-decoration: none;
+            padding: 8px 20px;
+            border: 1px solid var(--dark-red);
+            border-radius: 3px;
+            transition: all 0.3s;
+            position: relative;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+        }
+        
+        nav a::before {
+            content: "†";
+            margin-right: 5px;
+            color: var(--blood-red);
+        }
+        
+        nav a:hover {
+            background-color: var(--blood-red);
+            color: var(--black);
+        }
+        
+        /* Main Content */
+        .support-counter {
+            text-align: center;
+            font-size: 1.8rem;
+            margin: 40px 0;
+            color: var(--blood-red);
+            position: relative;
+            padding: 20px;
+            border: 1px solid var(--dark-red);
+            border-radius: 5px;
+            background-color: rgba(26, 26, 26, 0.7);
+        }
+        
+        .counter-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            margin: 10px 0;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(200, 178, 115, 0.5);
+        }
+        
+        .blink {
+            animation: blink 2s infinite;
+            color: var(--blood-red);
+            font-weight: bold;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* News Section */
+        .news-section {
+            background-color: var(--dark-gray);
+            padding: 30px;
+            border: 1px solid var(--dark-red);
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(138, 3, 3, 0.2);
+        }
+        
+        .section-title {
+            font-family: 'Cinzel', serif;
+            color: var(--blood-red);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--blood-red), transparent);
+        }
+        
+        .news-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .news-item h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+        }
+        
+        .news-date {
+            color: var(--blood-red);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .news-item p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--dark-gray);
+            padding: 30px;
+            border: 1px solid var(--dark-red);
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(138, 3, 3, 0.2);
+        }
+        
+        .sidebar h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--medium-gray);
+            padding-bottom: 10px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+        }
+        
+        .mission-statement {
+            font-style: italic;
+            color: var(--light-gray);
+            text-align: center;
+            margin: 20px 0;
+            padding: 0 10px;
+            position: relative;
+        }
+        
+        .mission-statement::before, .mission-statement::after {
+            content: """;
+            font-size: 3rem;
+            color: var(--blood-red);
+            position: absolute;
+        }
+        
+        .mission-statement::before {
+            top: -20px;
+            left: 0;
+        }
+        
+        .mission-statement::after {
+            bottom: -40px;
+            right: 0;
+        }
+        
+        .supporters-list {
+            list-style-type: none;
+        }
+        
+        .supporters-list li {
+            padding: 8px 0;
+            border-bottom: 1px dotted var(--medium-gray);
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .supporters-list li::before {
+            content: "🜲";
+            position: absolute;
+            left: 0;
+            color: var(--blood-red);
+        }
+        
+        /* Buttons */
+        .button {
+            display: inline-block;
+            background: linear-gradient(to bottom, var(--blood-red), var(--dark-red));
+            color: var(--parchment);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: bold;
+            margin: 10px 0;
+            transition: all 0.3s;
+            border: 1px solid var(--dark-red);
+            font-family: 'Cinzel', serif;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .button:hover {
+            background: linear-gradient(to bottom, #9e0404, #720000);
+            box-shadow: 0 0 15px rgba(138, 3, 3, 0.5);
+        }
+        
+        /* Additional Sections */
+        .additional-sections {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .additional-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .section-box {
+            background-color: var(--dark-gray);
+            padding: 25px;
+            border: 1px solid var(--dark-red);
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(138, 3, 3, 0.2);
+        }
+        
+        /* Principles Section */
+        .principles-list {
+            list-style-type: none;
+            counter-reset: principle-counter;
+        }
+        
+        .principles-list li {
+            margin-bottom: 20px;
+            padding-left: 50px;
+            position: relative;
+        }
+        
+        .principles-list li::before {
+            content: counter(principle-counter);
+            counter-increment: principle-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background-color: var(--blood-red);
+            color: var(--parchment);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+        }
+        
+        /* Comments Section */
+        .comments-section {
+            margin-top: 50px;
+        }
+        
+        .comment {
+            background-color: var(--dark-gray);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--blood-red);
+            position: relative;
+        }
+        
+        .comment::before {
+            content: "❝";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2rem;
+            color: var(--blood-red);
+            opacity: 0.3;
+        }
+        
+        .comment-author {
+            color: var(--gold);
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'Cinzel', serif;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--dark-red);
+            color: var(--light-gray);
+            font-size: 0.9rem;
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--blood-red), transparent);
+        }
+        
+        .disclaimer {
+            background-color: rgba(26, 26, 26, 0.7);
+            padding: 20px;
+            border-radius: 5px;
+            margin: 30px 0;
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            text-align: center;
+            border: 1px solid var(--medium-gray);
+        }
+        
+        /* Gothic Elements */
+        .gothic-border {
+            position: relative;
+            padding: 20px;
+            margin: 40px 0;
+            border: 2px solid var(--dark-red);
+            border-radius: 5px;
+        }
+        
+        .gothic-border::before, .gothic-border::after {
+            content: "†";
+            position: absolute;
+            color: var(--blood-red);
+            font-size: 1.5rem;
+        }
+        
+        .gothic-border::before {
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--black);
+            padding: 0 10px;
+        }
+        
+        .gothic-border::after {
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--black);
+            padding: 0 10px;
+        }
+        
+        /* Decorative Elements */
+        .decorative-divider {
+            height: 30px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30' viewBox='0 0 80 30'%3E%3Cpath d='M0,15 L30,15 L35,5 L40,25 L45,10 L50,20 L55,5 L60,25 L65,10 L70,20 L75,5 L80,15 L80,16 L75,16 L70,26 L65,11 L60,26 L55,6 L50,21 L45,11 L40,26 L35,6 L30,16 L0,16 Z' fill='%238a0303' fill-opacity='0.3'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+            margin: 40px 0;
+            opacity: 0.7;
+        }
+        
+        /* Animations */
+        @keyframes flicker {
+            0% { opacity: 1; }
+            5% { opacity: 0.7; }
+            10% { opacity: 0.8; }
+            15% { opacity: 0.6; }
+            20% { opacity: 0.9; }
+            25% { opacity: 0.7; }
+            30% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+        
+        .flicker {
+            animation: flicker 10s infinite;
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--dark-gray);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--blood-red);
+            border-radius: 6px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9e0404;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            header::before, header::after {
+                display: none;
+            }
+            
+            nav {
+                gap: 10px;
+            }
+            
+            nav a {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="flicker">KIRA</h1>
+            <div class="subtitle">The God of the New World - Purifying this Corrupt World</div>
+        </header>
+        
+        <nav>
+            <a href="#">Sanctuary</a>
+            <a href="#">Divine Judgments</a>
+            <a href="#">Scriptures</a>
+            <a href="#">Oracle</a>
+            <a href="#">Covenant</a>
+            <a href="#">Testimonials</a>
+            <a href="#">Sacraments</a>
+        </nav>
+        
+        <div class="support-counter">
+            <span>Global Followers of the New World:</span>
+            <span class="counter-number">2,478,916</span>
+            <span class="blink">DIVINE PRESENCE ACTIVE</span>
+        </div>
+        
+        <div class="decorative-divider"></div>
+        
+        <div class="main-content">
+            <div class="news-section">
+                <h2 class="section-title">Divine Decrees</h2>
+                
+                <div class="news-item">
+                    <h3>Kira's Judgment Upon the Wicked</h3>
+                    <span class="news-date">XIII Day of the Blood Moon, Year I of the New World</span>
+                    <p>In his infinite wisdom, Kira has passed judgment upon 47 corrupt officials and corporate leaders who have poisoned our society with their greed and corruption. Their names have been written in the sacred tome, and divine justice has been delivered.</p>
+                    <p>The world trembles at the power of Kira, as the wicked now know that their sins will not go unpunished. The righteous can now walk without fear, knowing that a higher power watches over them.</p>
+                    <a href="#" class="button">Witness the Divine Justice</a>
+                </div>
+                
+                <div class="news-item">
+                    <h3>The Failing Resistance of the Unbelievers</h3>
+                    <span class="news-date">IX Day of the Shadow Moon, Year I of the New World</span>
+                    <p>The so-called "investigators" continue to futilely attempt to uncover the divine nature of Kira's work. Their mortal minds cannot comprehend the celestial mechanisms through which Kira administers justice.</p>
+                    <p>Despite their efforts, crime rates have plummeted by 78% in regions where Kira's presence is most felt. The masses are awakening to the truth that only through absolute justice can true peace be achieved.</p>
+                    <a href="#" class="button">Read the Sacred Texts</a>
+                </div>
+                
+                <div class="news-item">
+                    <h3>The Prophecies of the New World</h3>
+                    <span class="news-date">V Day of the Crimson Moon, Year I of the New World</span>
+                    <p>Visionaries across the globe report dreams and premonitions of the world to come—a utopia free from the corruption and wickedness that currently plague our society. These visions align perfectly with Kira's divine plan for humanity.</p>
+                    <p>As the old world order crumbles, a new era of enlightenment and purity dawns. Those who embrace Kira's vision shall be welcomed into the new world, while those who resist shall face divine retribution.</p>
+                    <a href="#" class="button">Explore the Prophecies</a>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <h3>Kira's Divine Mandate</h3>
+                <blockquote class="mission-statement">
+                    "I am the righteous hand of judgment, the purifier of this corrupted world. Those who spread evil and injustice shall know my divine wrath. Through my actions, a new world shall be born—a utopia free from sin and corruption."
+                </blockquote>
+                
+                <h3>Sacred Principles</h3>
+                <ul class="supporters-list">
+                    <li>Justice above all mortal laws</li>
+                    <li>Purity of purpose through action</li>
+                    <li>Divine will over human corruption</li>
+                    <li>Sacrifice for the greater good</li>
+                    <li>Enlightenment through fear of judgment</li>
+                </ul>
+                
+                <h3>Recent Converts</h3>
+                <ul class="supporters-list">
+                    <li>Brother_of_Justice (United States)</li>
+                    <li>Divine_Hand (Japan)</li>
+                    <li>New_World_Prophet (United Kingdom)</li>
+                    <li>Kira's_Chosen (Germany)</li>
+                    <li>Purifier_87 (Russia)</li>
+                    <li>Disciple_of_Light (France)</li>
+                    <li>Righteous_One (Brazil)</li>
+                    <li>Sacred_Blade (Australia)</li>
+                </ul>
+                
+                <div class="gothic-border">
+                    <h3>Take the Oath</h3>
+                    <p>Swear allegiance to the new world and become an instrument of divine justice.</p>
+                    <a href="#" class="button">Pledge Your Soul</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="decorative-divider"></div>
+        
+        <div class="additional-sections">
+            <div class="section-box">
+                <h3 class="section-title">The Divine Principles</h3>
+                <ol class="principles-list">
+                    <li>
+                        <strong>The Principle of Righteous Judgment</strong>
+                        <p>Kira alone possesses the wisdom and moral clarity to judge the wicked. Human justice systems are flawed and corrupted by the very evil they claim to oppose.</p>
+                    </li>
+                    <li>
+                        <strong>The Principle of Sacrifice</strong>
+                        <p>The creation of a new world requires the elimination of those who would corrupt it. This is not murder but divine purification.</p>
+                    </li>
+                    <li>
+                        <strong>The Principle of Fear</strong>
+                        <p>Only through fear of divine retribution can humanity be guided toward righteousness. The fear of Kira's judgment prevents more evil than any prison.</p>
+                    </li>
+                    <li>
+                        <strong>The Principle of Secrecy</strong>
+                        <p>Kira's identity must remain hidden to protect the divine mission. Mortal minds cannot comprehend the celestial nature of this work.</p>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="section-box">
+                <h3 class="section-title">Sacred Timeline</h3>
+                <div class="news-item">
+                    <h4>The First Judgment</h4>
+                    <span class="news-date">Day I of the Awakening</span>
+                    <p>The initial demonstration of divine power that revealed Kira's presence to the world.</p>
+                </div>
+                <div class="news-item">
+                    <h4>The Revelation</h4>
+                    <span class="news-date">Day XXV of the Awakening</span>
+                    <p>Kira's message to the world, explaining the divine purpose behind the judgments.</p>
+                </div>
+                <div class="news-item">
+                    <h4>The Great Purification</h4>
+                    <span class="news-date">Day LXX of the Awakening</span>
+                    <p>Simultaneous judgment of 23 corrupt leaders across the globe, demonstrating Kira's omnipotence.</p>
+                </div>
+                <div class="news-item">
+                    <h4>The Covenant</h4>
+                    <span class="news-date">Day C of the Awakening</span>
+                    <p>Establishment of the sacred principles that guide Kira's divine mission.</p>
+                </div>
+                <a href="#" class="button">Study the Complete Timeline</a>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            <p>Disclaimer: This sanctuary is maintained by devoted followers of Kira's divine vision. We are not Kira, but humble instruments in the creation of the new world. The methods of divine judgment are beyond mortal comprehension.</p>
+            <p>All who enter here do so with the understanding that they witness the unfolding of a celestial plan to purify humanity and establish a utopian society free from corruption.</p>
+        </div>
+        
+        <div class="comments-section">
+            <h2 class="section-title">Testimonials of the Faithful</h2>
+            
+            <div class="comment">
+                <div class="comment-author">Brother_of_Retribution:</div>
+                <p>For years I watched as the corrupt walked free while the innocent suffered. My faith in humanity was nearly extinguished until Kira revealed the path to righteousness. Now I understand that true justice requires divine intervention. May the wicked tremble before Kira's judgment.</p>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">Sister_of_Salvation:</div>
+                <p>I was skeptical at first, fearing the methods were too extreme. But then I witnessed the transformation in my city—the criminals who once ruled the streets now hide in fear, while ordinary people can walk safely at night. This is not violence; this is salvation.</p>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">Acolyte_of_Purity:</div>
+                <p>The governments of the world have failed us. Their justice systems are corrupt, their laws protect the wicked, and their inaction condemns the innocent. Kira is the solution we have prayed for—a force beyond their corruption, administering true justice without bias or compromise.</p>
+            </div>
+            
+            <div class="comment">
+                <div class="comment-author">Prophet_of_the_New_World:</div>
+                <p>I have seen visions of the world to come—a utopia where children need not fear violence, where leaders are truly just, and where corruption has been purged from society. Kira is the catalyst for this transformation, the divine instrument through which humanity will evolve.</p>
+            </div>
+            
+            <a href="#" class="button">Share Your Testimony</a>
+        </div>
+        
+        <footer>
+            <p>Sanctuary of Kira © Year I of the New World - This sacred space is devoted to the divine vision of a purified world</p>
+            <p>Devotees: 2,478,916 | Last Revelation: XIII Day of the Blood Moon</p>
+            <p>All who oppose divine justice shall be judged</p>
+        </footer>
+    </div>
+
+    <script>
+        // Enhanced counter animation with random fluctuations
+        document.addEventListener('DOMContentLoaded', function() {
+            const counterElement = document.querySelector('.counter-number');
+            let count = 2478916;
+            const targetCount = 2478916 + Math.floor(Math.random() * 5000);
+            
+            const updateCounter = () => {
+                // Random growth with occasional decreases to simulate realistic fluctuation
+                const change = Math.random() > 0.1 ? Math.floor(Math.random() * 15) + 1 : -Math.floor(Math.random() * 5);
+                count += change;
+                
+                // Ensure we don't go below initial value
+                if (count < 2478916) count = 2478916;
+                
+                counterElement.textContent = count.toLocaleString();
+                
+                if (count < targetCount) {
+                    setTimeout(updateCounter, Math.random() * 1000 + 500);
+                }
+            };
+            
+            setTimeout(updateCounter, 1000);
+            
+            // Add flickering effect to elements with the flicker class
+            const flickerElements = document.querySelectorAll('.flicker');
+            setInterval(() => {
+                flickerElements.forEach(el => {
+                    el.style.opacity = (0.7 + Math.random() * 0.3).toString();
+                });
+            }, 3000);
+            
+            // Add occasional blood red pulsing effect
+            setInterval(() => {
+                document.body.style.boxShadow = '0 0 50px rgba(138, 3, 3, 0.5)';
+                setTimeout(() => {
+                    document.body.style.boxShadow = 'none';
+                }, 300);
+            }, 10000);
+        });
+    </script>
+</body>
+</html>
